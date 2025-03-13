@@ -1,0 +1,36 @@
+h1 {
+    text-align: center;
+    color: aliceblue;
+}
+
+#caisse {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    row-gap: 1rem;
+    border: 6px solid black;
+    transition: 0.25s ease;
+    background: black;
+    padding: 10px;
+}
+
+* {
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    list-style: none;
+}
+
+body {
+    background-color: black;
+}
+
+#Question {
+    color: aliceblue;
+}
+
+
+#rep {
+    color: aliceblue;
+    visibility: hidden;
+}
