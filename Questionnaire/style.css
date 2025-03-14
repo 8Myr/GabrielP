@@ -34,3 +34,12 @@ body {
     color: aliceblue;
     visibility: hidden;
 }
+
+#nextpage {
+    visibility: hidden;
+    border-radius: 5px;
+}
+
+#rep1, #rep2 {
+     border-radius: 5px;
+}

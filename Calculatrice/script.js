@@ -7,9 +7,9 @@ document.querySelector(".btnplus").addEventListener("click", () => {
 });
 
 document.querySelector(".btnmoins").addEventListener("click", () => {
-  res.innerText = parseInt(input1.value, 10) + parseInt(input2.value, 10);
+  res.innerText = parseInt(input1.value, 10) - parseInt(input2.value, 10);
 });
 
 document.querySelector(".btnmult").addEventListener("click", () => {
-  res.innerText = parseInt(input1.value, 10) + parseInt(input2.value, 10);
+  res.innerText = parseInt(input1.value, 10) * parseInt(input2.value, 10);
 });
