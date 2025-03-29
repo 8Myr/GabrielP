@@ -7,9 +7,10 @@
     <link rel="stylesheet" href="./css/output.css">
 </head>
 
-<body class="flex items-center justify-center bg-gradient-to-br text-white">
+<body class="flex flex-col items-center justify-center bg-gradient-to-br text-white">
+    <!-- Première section -->
     <div
-        class="flex items-start space-x-8 bg-gray-700/70 backdrop-blur-md p-8 rounded-lg shadow-2xl border border-gray-600 mt-8 sm:mt-12">
+        class="flex items-start space-x-8 bg-gray-700/70 backdrop-blur-md p-8 rounded-lg shadow-2xl border border-gray-600 mt-8 sm:mt-12 w-11/12">
         <!-- Contenu principal -->
         <div class="flex-1">
             <h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold text-center text-gray-100">
@@ -25,12 +26,85 @@
             <li>
                 <h2 class="menu-title">Menu</h2>
                 <ul>
-                    <li><a href="#">Home</a></li>
+                    <li><a href="./index.html">Home</a></li>
                     <li><a href="#">Calculatrice</a></li>
                     <li><a href="#">Contact</a></li>
                 </ul>
             </li>
         </ul>
+    </div>
+
+    <!-- Deuxième section -->
+    <div
+        class="flex flex-col items-center bg-gray-700/70 backdrop-blur-md p-8 rounded-lg shadow-2xl border border-gray-600 mt-8 sm:mt-12 w-11/12">
+        <!-- Titre centré en haut -->
+        <div class="flex justify-center mb-6">
+            <h2 class="text-3xl sm:text-4xl font-bold text-gray-100">
+                Parcours Scolaire
+            </h2>
+        </div>
+
+        <!-- Timeline -->
+        <br>
+        <ul class="timeline timeline-snap-icon max-md:timeline-compact timeline-vertical">
+            <li>
+                <div class="timeline-middle">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="h-5 w-5">
+                        <path fill-rule="evenodd"
+                            d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z"
+                            clip-rule="evenodd" />
+                    </svg>
+                </div>
+                <div class="timeline-start mb-10 md:text-end">
+                    <time class="font-mono italic">2021</time>
+                    <div class="text-lg font-black">Brevet des collèges</div>
+                    Obtention du diplôme national du brevet, Collège et Lycée Blanche de Castille, Le
+                    Chesnay-Rocquencourt.
+                </div>
+                <hr />
+            </li>
+            <li>
+                <hr />
+                <div class="timeline-middle">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="h-5 w-5">
+                        <path fill-rule="evenodd"
+                            d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z"
+                            clip-rule="evenodd" />
+                    </svg>
+                </div>
+                <div class="timeline-end md:mb-10">
+                    <time class="font-mono italic">2024</time>
+                    <div class="text-lg font-black">Baccalauréat STI2D</div>
+                    Obtention du Baccalauréat STI2D avec option Systèmes d'Informations et Numérique (SIN), Lycée
+                    Général et Technologique Saint-Erembert, Saint-Germain-en-Laye.
+                </div>
+                <hr />
+            </li>
+            <li>
+                <hr />
+                <div class="timeline-middle">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="h-5 w-5">
+                        <path fill-rule="evenodd"
+                            d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z"
+                            clip-rule="evenodd" />
+                    </svg>
+                </div>
+                <div class="timeline-start mb-10 md:text-end">
+                    <time class="font-mono italic">2027</time>
+                    <div class="text-lg font-black">Bachelor Cybersécurité EPITA</div>
+                    Actuelement en Bachelor Cybersécurité de l'EPITA (Ecole Pour l'Informatique et les Techniques
+                    Avancées), en partnariat avec l'école Polytechnique soutenu par le ministère des armées, Campus
+                    Cyber, La Défense.
+                </div>
+            </li>
+    </div>
+    <div
+        class="flex flex-col items-center bg-gray-700/70 backdrop-blur-md p-8 rounded-lg shadow-2xl border border-gray-600 mt-8 sm:mt-12 w-11/12">
+        <!-- Titre centré en haut -->
+        <div class="mockup-code w-full">
+            <pre data-prefix="$"><code>ls CodingSkills/ </code></pre>
+            <pre data-prefix="$"><code>Python/     Shell/     HTML5/     CSS/     Javascript/     C/</code></pre>
+        </div>
     </div>
 </body>
 
