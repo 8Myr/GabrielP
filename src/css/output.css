@@ -3475,6 +3475,18 @@
   .bottom-4 {
     bottom: calc(var(--spacing) * 4);
   }
+  .bottom-12 {
+    bottom: calc(var(--spacing) * 12);
+  }
+  .bottom-14 {
+    bottom: calc(var(--spacing) * 14);
+  }
+  .bottom-16 {
+    bottom: calc(var(--spacing) * 16);
+  }
+  .bottom-20 {
+    bottom: calc(var(--spacing) * 20);
+  }
   .file-input {
     cursor: pointer;
     cursor: pointer;
