@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculatrice</title>
+    <link rel="stylesheet" href="./css/output.css">
+</head>
+<button onclick="scrollToTop()"
+    class="btn btn-soft bg-gray-700 text-white border-gray-600 fixed bottom-4 right-4 flex items-center gap-2 p-3 rounded-lg shadow-lg z-50">
+    Haut de Page
+</button>
+
+<body>
+    <div
+        class="flex items-start space-x-8 bg-gray-700/70 backdrop-blur-md p-8 rounded-lg shadow-2xl border border-gray-600 mt-8 sm:mt-12 mx-auto max-w-screen-md w-full">
+
+        <div class="flex-1">
+            <h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold text-center text-gray-100 mt-8">
+                Calculatrice
+            </h1>
+        </div>
+
+        <ul class="menu bg-base-200 rounded-box w-56 shadow-lg rounded-lg">
+            <li>
+                <h2 class="menu-title">Menu</h2>
+                <ul>
+                    <li><a href="./index.html">Home</a></li>
+                    <li><a href="./calculatrice.html">Calculatrice</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+
+    <div
+        class="flex flex-col items-center bg-gray-700/70 backdrop-blur-md p-8 rounded-lg shadow-2xl border border-gray-600 mt-8 sm:mt-12 mx-auto max-w-screen-md w-full">
+        <h2 class="text-3xl font-bold text-gray-100 mb-6">Interface de Calculatrice</h2>
+        <div class="flex flex-col space-y-4 w-full max-w-md">
+            <div id="screen" class="bg-gray-800 text-gray-100 text-right text-3xl font-mono p-4 rounded-lg shadow-md">
+                0
+            </div>
+            <div class="grid grid-cols-4 gap-2">
+                <button onclick="appendNumber('7')"
+                    class="btn bg-gray-600 hover:bg-gray-500 text-gray-100 px-2 py-1 text-sm">7</button>
+                <button onclick="appendNumber('8')"
+                    class="btn bg-gray-600 hover:bg-gray-500 text-gray-100 px-2 py-1 text-sm">8</button>
+                <button onclick="appendNumber('9')"
+                    class="btn bg-gray-600 hover:bg-gray-500 text-gray-100 px-2 py-1 text-sm">9</button>
+                <button onclick="setOperation('divide')"
+                    class="btn bg-[#1E5A75] hover:bg-[#1C4F66] text-gray-100 px-2 py-1 text-lg">÷</button>
+
+                <button onclick="appendNumber('4')"
+                    class="btn bg-gray-600 hover:bg-gray-500 text-gray-100 px-2 py-1 text-sm">4</button>
+                <button onclick="appendNumber('5')"
+                    class="btn bg-gray-600 hover:bg-gray-500 text-gray-100 px-2 py-1 text-sm">5</button>
+                <button onclick="appendNumber('6')"
+                    class="btn bg-gray-600 hover:bg-gray-500 text-gray-100 px-2 py-1 text-sm">6</button>
+                <button onclick="setOperation('multiply')"
+                    class="btn bg-[#1E5A75] hover:bg-[#1C4F66] text-gray-100 px-2 py-1 text-lg">x</button>
+
+                <button onclick="appendNumber('1')"
+                    class="btn bg-gray-600 hover:bg-gray-500 text-gray-100 px-2 py-1 text-sm">1</button>
+                <button onclick="appendNumber('2')"
+                    class="btn bg-gray-600 hover:bg-gray-500 text-gray-100 px-2 py-1 text-sm">2</button>
+                <button onclick="appendNumber('3')"
+                    class="btn bg-gray-600 hover:bg-gray-500 text-gray-100 px-2 py-1 text-sm">3</button>
+                <button onclick="setOperation('subtract')"
+                    class="btn bg-[#1E5A75] hover:bg-[#1C4F66] text-gray-100 px-2 py-1 text-lg">-</button>
+
+                <button onclick="appendNumber('0')"
+                    class="btn bg-gray-600 hover:bg-gray-500 text-gray-100 px-2 py-1 text-sm col-span-2">0</button>
+                <button onclick="calculateResult()"
+                    class="btn bg-[#1E5A75] hover:bg-[#1C4F66] text-gray-100 px-2 py-1 text-lg">=</button>
+                <button onclick="setOperation('add')"
+                    class="btn bg-[#1E5A75] hover:bg-[#1C4F66] text-gray-100 px-2 py-1 text-lg">+</button>
+            </div>
+
+            <div class="grid grid-cols-1 gap-2 mt-4">
+                <button onclick="clearScreen()"
+                    class="btn bg-[#1E5A75] hover:bg-[#1C4F66] text-gray-100 px-2 py-1 text-lg">C</button>
+            </div>
+        </div>
+        <div id="history" class="bg-gray-800 text-gray-100 p-4 rounded-lg shadow-md mt-6 w-full max-w-md">
+            <h3 class="text-xl font-bold mb-4">Historique des Calculs</h3>
+            <ul id="history-list" class="list-disc list-inside space-y-2">
+            </ul>
+        </div>
+    </div>
+    <br>
+    <br>
+    <script src="./main.js"></script>
+
+</html>
