@@ -1,101 +1,98 @@
-let currentInput = '';
-let previousInput = '';
-let operation = null;
+let currentInput = ""; // Stocke l'entrée actuelle
+let previousInput = ""; // Stocke l'entrée précédente
+let operation = null; // Stocke l'opération en cours
 
-// Fonction pour ajouter un chiffre à l'écran
+// Met à jour l'écran de la calculatrice
+function updateScreen() {
+    const screen = document.getElementById("screen");
+    screen.textContent = `${previousInput} ${operation || ""} ${currentInput}`.trim();
+}
+
+// Ajoute un nombre à l'entrée actuelle
 function appendNumber(number) {
-    if (currentInput.length < 10) {
-        currentInput += number;
-        updateScreen();
-    }
+    if (currentInput === "0" && number === "0") return; // Empêche plusieurs zéros au début
+    currentInput += number;
+    updateScreen();
 }
 
-// Fonction pour définir l'opération
+// Définit l'opération
 function setOperation(op) {
-    if (currentInput === '') return;
-    if (previousInput !== '') {
-        calculateResult();
+    if (currentInput === "") return; // Empêche de définir une opération sans entrée
+    if (previousInput !== "") {
+        calculateResult(); // Calcule le résultat si une opération est déjà en cours
     }
-    operation = op;
+    operation = getOperationSymbol(op);
     previousInput = currentInput;
-    currentInput = '';
+    currentInput = "";
+    updateScreen();
 }
 
-// Fonction pour calculer le résultat
+// Calcule le résultat
 function calculateResult() {
-    let result;
-    const prev = parseFloat(previousInput);
-    const current = parseFloat(currentInput);
+    if (previousInput === "" || currentInput === "" || operation === null) return;
 
-    if (isNaN(prev) || isNaN(current)) return;
+    const num1 = parseFloat(previousInput);
+    const num2 = parseFloat(currentInput);
+    let result;
 
     switch (operation) {
-        case 'add':
-            result = prev + current;
+        case "+":
+            result = num1 + num2;
             break;
-        case 'subtract':
-            result = prev - current;
+        case "-":
+            result = num1 - num2;
             break;
-        case 'multiply':
-            result = prev * current;
+        case "x":
+            result = num1 * num2;
             break;
-        case 'divide':
-            if (current === 0) {
-                alert('Division par zéro impossible.');
-                clearScreen();
-                return;
-            }
-            result = prev / current;
+        case "÷":
+            result = num2 !== 0 ? num1 / num2 : "Erreur";
             break;
         default:
             return;
     }
 
-    addToHistory(`${prev} ${getOperationSymbol(operation)} ${current} = ${result}`);
+    // Ajoute l'opération à l'historique
+    addToHistory(`${previousInput} ${operation} ${currentInput} = ${result}`);
+
+    // Met à jour les valeurs
     currentInput = result.toString();
+    previousInput = "";
     operation = null;
-    previousInput = '';
     updateScreen();
 }
 
-// Fonction pour effacer l'écran
+// Efface l'écran et réinitialise les valeurs
 function clearScreen() {
-    currentInput = '';
-    previousInput = '';
+    currentInput = "";
+    previousInput = "";
     operation = null;
     updateScreen();
 }
 
-// Fonction pour mettre à jour l'écran
-function updateScreen() {
-    const screen = document.getElementById('screen');
-    screen.textContent = currentInput || '0';
-}
-
-// Fonction pour ajouter un calcul à l'historique
+// Ajoute une opération à l'historique
 function addToHistory(entry) {
-    const historyList = document.getElementById('history-list');
-    const listItem = document.createElement('li');
+    const historyList = document.getElementById("history-list");
+    const listItem = document.createElement("li");
     listItem.textContent = entry;
     historyList.appendChild(listItem);
 }
 
-// Fonction pour obtenir le symbole de l'opération
+// Retourne le symbole de l'opération
 function getOperationSymbol(op) {
     switch (op) {
-        case 'add':
-            return '+';
-        case 'subtract':
-            return '−';
-        case 'multiply':
-            return '×';
-        case 'divide':
-            return '÷';
+        case "add":
+            return "+";
+        case "subtract":
+            return "-";
+        case "multiply":
+            return "x";
+        case "divide":
+            return "÷";
         default:
-            return '';
+            return null;
     }
 }
-
 
 function scrollToTop() {
     window.scrollTo({
@@ -293,7 +290,7 @@ function showQuestion() {
                 const message = document.getElementById("message").value;
 
                 // Construction de l'URL mailto
-                const mailtoLink = `mailto:your-email@example.com?subject=Contact%20de%20${firstName}%20${name}&body=${encodeURIComponent(
+                const mailtoLink = `mailto:gabriel.pillegand@epita.fr?subject=Contact%20de%20${firstName}%20${name}&body=${encodeURIComponent(
                     `Nom: ${name}\nPrénom: ${firstName}\nEmail: ${email}\n\nMessage:\n${message}`
                 )}`;
                 window.location.href = mailtoLink;
