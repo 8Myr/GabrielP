@@ -1,0 +1,92 @@
+[
+    {
+        "question": "Quel est le but principal d'un pare-feu ?",
+        "options": [
+            {
+                "text": "Bloquer les virus",
+                "value": "a"
+            },
+            {
+                "text": "Contrôler le trafic réseau",
+                "value": "b"
+            },
+            {
+                "text": "Sauvegarder les données",
+                "value": "c"
+            }
+        ],
+        "correct": "b"
+    },
+    {
+        "question": "Que signifie le terme 'phishing' ?",
+        "options": [
+            {
+                "text": "Une attaque par mot de passe",
+                "value": "a"
+            },
+            {
+                "text": "Une tentative de vol d'informations",
+                "value": "b"
+            },
+            {
+                "text": "Une attaque par déni de service",
+                "value": "c"
+            }
+        ],
+        "correct": "b"
+    },
+    {
+        "question": "Quelle est la méthode la plus sûre pour protéger un mot de passe ?",
+        "options": [
+            {
+                "text": "Le noter sur un papier",
+                "value": "a"
+            },
+            {
+                "text": "Utiliser un gestionnaire de mots de passe",
+                "value": "b"
+            },
+            {
+                "text": "Le mémoriser uniquement",
+                "value": "c"
+            }
+        ],
+        "correct": "b"
+    },
+    {
+        "question": "Que signifie HTTPS dans une URL ?",
+        "options": [
+            {
+                "text": "HyperText Transfer Protocol Secure",
+                "value": "a"
+            },
+            {
+                "text": "HyperText Transfer Protocol Standard",
+                "value": "b"
+            },
+            {
+                "text": "HyperText Transfer Protocol Simple",
+                "value": "c"
+            }
+        ],
+        "correct": "a"
+    },
+    {
+        "question": "Quelle est la meilleure pratique pour éviter les ransomwares ?",
+        "options": [
+            {
+                "text": "Ne jamais ouvrir les pièces jointes d'e-mails suspects",
+                "value": "a"
+            },
+            {
+                "text": "Installer un antivirus",
+                "value": "b"
+            },
+            {
+                "text": "Utiliser un VPN",
+                "value": "c"
+            }
+        ],
+        "correct": "a"
+    }
+]

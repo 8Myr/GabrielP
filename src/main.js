@@ -101,56 +101,24 @@ function scrollToTop() {
     });
 }
 
-const questions = [
-    {
-        question: "Quel est le but principal d'un pare-feu ?",
-        options: [
-            { text: "Bloquer les virus", value: "a" },
-            { text: "Contrôler le trafic réseau", value: "b" },
-            { text: "Sauvegarder les données", value: "c" }
-        ],
-        correct: "b"
-    },
-    {
-        question: "Que signifie le terme 'phishing' ?",
-        options: [
-            { text: "Une attaque par mot de passe", value: "a" },
-            { text: "Une tentative de vol d'informations", value: "b" },
-            { text: "Une attaque par déni de service", value: "c" }
-        ],
-        correct: "b"
-    },
-    {
-        question: "Quelle est la méthode la plus sûre pour protéger un mot de passe ?",
-        options: [
-            { text: "Le noter sur un papier", value: "a" },
-            { text: "Utiliser un gestionnaire de mots de passe", value: "b" },
-            { text: "Le mémoriser uniquement", value: "c" }
-        ],
-        correct: "b"
-    },
-    {
-        question: "Que signifie HTTPS dans une URL ?",
-        options: [
-            { text: "HyperText Transfer Protocol Secure", value: "a" },
-            { text: "HyperText Transfer Protocol Standard", value: "b" },
-            { text: "HyperText Transfer Protocol Simple", value: "c" }
-        ],
-        correct: "a"
-    },
-    {
-        question: "Quelle est la meilleure pratique pour éviter les ransomwares ?",
-        options: [
-            { text: "Ne jamais ouvrir les pièces jointes d'e-mails suspects", value: "a" },
-            { text: "Installer un antivirus", value: "b" },
-            { text: "Utiliser un VPN", value: "c" }
-        ],
-        correct: "a"
-    }
-];
-
+let questions = []; // Les questions seront chargées depuis questions.json
 let currentQuestionIndex = 0;
 let score = 0; // Initialisation du score
+
+// Charge les questions depuis le fichier JSON
+async function loadQuestions() {
+    try {
+        const response = await fetch('./questions.json'); // Chemin relatif vers questions.json
+        if (!response.ok) {
+            throw new Error(`Erreur lors du chargement des questions : ${response.status}`);
+        }
+        questions = await response.json();
+        showQuestion(); // Affiche la première question après le chargement
+    } catch (error) {
+        console.error(error);
+        alert("Impossible de charger les questions. Veuillez réessayer plus tard.");
+    }
+}
 
 function showQuestion() {
     const quizContainer = document.getElementById("quiz-container");
@@ -290,7 +258,7 @@ function showQuestion() {
                 const message = document.getElementById("message").value;
 
                 // Construction de l'URL mailto
-                const mailtoLink = `mailto:gabriel.pillegand@epita.fr?subject=Contact%20de%20${firstName}%20${name}&body=${encodeURIComponent(
+                const mailtoLink = `mailto:mail.mail@mail.mail?subject=Contact%20de%20${firstName}%20${name}&body=${encodeURIComponent(
                     `Nom: ${name}\nPrénom: ${firstName}\nEmail: ${email}\n\nMessage:\n${message}`
                 )}`;
                 window.location.href = mailtoLink;
@@ -301,6 +269,9 @@ function showQuestion() {
         }
     }
 }
+
+// Charge les questions et démarre le quiz
+loadQuestions();
 
 function checkAnswer(correctionButton, buttonContainer) {
     const selectedOption = document.querySelector('input[name="answer"]:checked');
@@ -349,6 +320,3 @@ function checkAnswer(correctionButton, buttonContainer) {
     // Ajoute le conteneur d'alignement au conteneur principal
     buttonContainer.appendChild(buttonAlignmentContainer);
 }
-
-// Affiche la première question
-showQuestion();
