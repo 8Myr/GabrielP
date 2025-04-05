@@ -94,7 +94,7 @@ function getOperationSymbol(op) {
     }
 }
 
-function scrollToTop() {
+function scrollToTop() { // Retourne en haut de la page
     window.scrollTo({
         top: 0,
         behavior: 'smooth'

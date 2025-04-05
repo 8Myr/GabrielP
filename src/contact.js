@@ -1,12 +1,12 @@
-function scrollToTop() {
+function scrollToTop() {  // Permet de retourner en haut de la page
     window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
-let questions = [];
-let currentQuestionIndex = 0;
-let score = 0;
+let questions = []; // Contiendra toutes les questions chargées
+let currentQuestionIndex = 0; // L'index de la question actuelle
+let score = 0; // Score de l'utilisateur
 
-async function loadQuestions() {
+async function loadQuestions() { // Chargmement des question depuis le fichier questions.json
     try {
         const response = await fetch('./questions.json');
         if (!response.ok) throw new Error(`Erreur : ${response.status}`);
@@ -18,7 +18,7 @@ async function loadQuestions() {
     }
 }
 
-function showQuestion() {
+function showQuestion() { // affichage de la question actuelle + boutons
     const quizContainer = document.getElementById("quiz-container");
     quizContainer.innerHTML = "";
 
@@ -43,11 +43,15 @@ function showQuestion() {
         });
 
         const buttonContainer = document.createElement("div");
-        buttonContainer.className = "flex flex-col items-start space-y-4 mt-4";
+        buttonContainer.className = "flex flex-row items-center space-x-4 mt-4";
 
         const correctionButton = document.createElement("button");
         correctionButton.textContent = "Correction";
-        correctionButton.className = "btn py-2 rounded-lg bg-gray-300 text-black px-4";
+        correctionButton.className = "btn px-4 py-2 rounded-[1rem] text-white transition duration-200";
+        correctionButton.style.backgroundColor = "#004B74";
+        correctionButton.onmouseover = () => correctionButton.style.backgroundColor = "#036797";
+        correctionButton.onmouseout = () => correctionButton.style.backgroundColor = "#004B74";
+
         correctionButton.onclick = () => {
             const selected = document.querySelector('input[name="answer"]:checked');
             if (!selected) return alert("Sélectionnez une réponse !");
@@ -56,19 +60,24 @@ function showQuestion() {
         };
         buttonContainer.appendChild(correctionButton);
 
-        quizContainer.appendChild(buttonContainer);
-
         const autoAnswerBtn = document.createElement("button");
         autoAnswerBtn.textContent = "BruteForce";
-        autoAnswerBtn.className = "btn bg-purple-600 text-white px-4 py-2 rounded-lg ml-4";
+        autoAnswerBtn.className = "btn px-4 py-2 rounded-[1rem] text-white transition duration-200";
+        autoAnswerBtn.style.backgroundColor = "#004B74";
+        autoAnswerBtn.onmouseover = () => autoAnswerBtn.style.backgroundColor = "#036797";
+        autoAnswerBtn.onmouseout = () => autoAnswerBtn.style.backgroundColor = "#004B74";
+
         autoAnswerBtn.onclick = autoAnswerQuiz;
-        quizContainer.appendChild(autoAnswerBtn);
+        buttonContainer.appendChild(autoAnswerBtn);
+
+        quizContainer.appendChild(buttonContainer);
     } else {
         showFinalResult();
     }
 }
 
-function handleAnswerResult(isCorrect, correctionButton, buttonContainer) {
+
+function handleAnswerResult(isCorrect, correctionButton, buttonContainer) { // Si la question est correcte, désactive les options et propose un bouton pour passer à la question suivante sinon permet de rééssayer.
     const allInputs = document.querySelectorAll('input[name="answer"]');
     const oldMessage = buttonContainer.querySelector(".feedback-message");
     if (oldMessage) oldMessage.remove();
@@ -104,7 +113,7 @@ function handleAnswerResult(isCorrect, correctionButton, buttonContainer) {
     buttonContainer.appendChild(feedbackMessage);
 }
 
-function showFinalResult() {
+function showFinalResult() { // Affiche le score final, le tableau avec les questions et les corrections et le formulaire de contact si score >= 4
     const quizContainer = document.getElementById("quiz-container");
     quizContainer.innerHTML = "";
 
@@ -162,7 +171,7 @@ function showFinalResult() {
             form.appendChild(input);
         });
 
-        const sendBtn = document.createElement("button");
+        const sendBtn = document.createElement("button"); // Envoie un mail via un lien mailto: avec les infos du formulaire
         sendBtn.textContent = "Envoyer";
         sendBtn.className = "btn bg-blue-500 text-white px-4 py-2 rounded-lg w-full";
         sendBtn.onclick = () => {
@@ -178,13 +187,13 @@ function showFinalResult() {
     }
 }
 
-async function autoAnswerQuiz() {
+async function autoAnswerQuiz() { // Charge les questions si pas encore fait
     if (!questions.length) {
         await loadQuestions();
         return;
     }
 
-    async function bruteForceQuestion() {
+    async function bruteForceQuestion() { // Tente chaque option jusqu'a trouver la bonne et passe ensuite à la question suivante
         if (currentQuestionIndex >= questions.length) {
             showFinalResult();
             return;
@@ -234,4 +243,4 @@ async function autoAnswerQuiz() {
     bruteForceQuestion();
 }
 
-loadQuestions();
+loadQuestions(); // Lance le questionnaire au chargement de la page
